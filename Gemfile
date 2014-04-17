@@ -53,3 +53,4 @@ group :development do
 end
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
+gem 'slim'
