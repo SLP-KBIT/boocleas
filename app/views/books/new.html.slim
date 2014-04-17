@@ -1,0 +1,6 @@
+h1  book
+
+= form_for @book, url: book_confirm_path do |f|
+  = f.label :isbn
+  = f.text_field :isbn
+  = f.submit
