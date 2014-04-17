@@ -11,6 +11,7 @@
 #  keyword      :text
 #  created_at   :datetime
 #  updated_at   :datetime
+#  title        :text
 #
 
 class Book < ActiveRecord::Base

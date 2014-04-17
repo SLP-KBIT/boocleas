@@ -1,6 +1,7 @@
 BookAdmin::Application.routes.draw do
   get "books/index"
   resources :books
+  post "books/confirm", as: "book_confirm"
   resources :biblios
   resources :shelves
   # The priority is based upon order of creation: first created -> highest priority.
