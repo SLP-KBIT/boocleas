@@ -1,6 +1,6 @@
 h1 book confirm
 
-table
+table.ui.table.segment
   tr
     th title
     td = @book.title
@@ -19,3 +19,14 @@ table
   tr
     th keyword
     td = @book.keyword
+
+= form_for @book, url: books_path, method: :post do |f|
+  = f.hidden_field :title
+  = f.hidden_field :author
+  = f.hidden_field :isbn
+  = f.hidden_field :publisher
+  = f.hidden_field :published_at
+  = f.hidden_field :keyword
+  = f.submit class: "ui button blue"
+
+= link_to "戻る", new_book_path, class: "ui button teal"

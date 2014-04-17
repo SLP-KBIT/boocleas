@@ -1,0 +1,21 @@
+h1
+  =raw "Books#index <small>" + link_to("登録", new_book_path, class: "ui button small blue") + "</small>"
+
+table.ui.table
+  thead
+    tr
+      th タイトル
+      th 著者
+      th ISBN
+      th 出版社
+      th 出版日
+      th キーワード
+  tbody
+    - @books.each do |book|
+      tr
+        td = book.title
+        td = book.author
+        td = book.isbn
+        td = book.publisher
+        td = book.published_at
+        td = book.keyword

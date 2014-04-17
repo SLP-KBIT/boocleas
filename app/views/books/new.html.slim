@@ -1,6 +1,27 @@
 h1  book
 
+- if flash[:error]
+  .ui.error.mesage
+    i.close.icon
+    .header Error
+    p = flash.now[:error]
+- if flash[:success]
+  .ui.success.message
+    i.close.icon
+    .header = flash[:success]
+
 = form_for @book, url: book_confirm_path do |f|
-  = f.label :isbn
-  = f.text_field :isbn
-  = f.submit
+  .ui.form.segment.small
+    .field
+      = f.label :isbn
+      .ui.labeled.input.left
+        = f.text_field :isbn, autofocus: true
+    .field
+      = f.submit "確認", class: "ui submit blue button"
+
+.ui.segment.inverted.teal.secondary
+  | バーコードリーダを使って書籍のISBNを読み込んでください。<br />
+    ISBNは<strong>9784</strong>から始まります。
+
+javascript:
+  $("input[type=text]").focus();
