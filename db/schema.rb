@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140417171129) do
+ActiveRecord::Schema.define(version: 20140417171759) do
 
   create_table "biblios", force: true do |t|
     t.integer  "book_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20140417171129) do
     t.string   "isbn"
     t.text     "author"
     t.integer  "published_at"
-    t.string   "publisheder"
+    t.string   "publisher"
     t.text     "genre"
     t.text     "keyword"
     t.datetime "created_at"

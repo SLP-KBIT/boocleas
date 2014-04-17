@@ -6,7 +6,7 @@
 #  isbn         :string(255)
 #  author       :text
 #  published_at :integer
-#  publisheder  :string(255)
+#  publisher    :string(255)
 #  genre        :text
 #  keyword      :text
 #  created_at   :datetime
