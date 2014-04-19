@@ -27,6 +27,10 @@ table.ui.table.segment
   = f.hidden_field :publisher
   = f.hidden_field :published_at
   = f.hidden_field :keyword
+  .ui.segment
+    = f.fields_for :biblios do |biblio|
+      = biblio.label :shelf
+      = biblio.collection_select(:shelf_id, @shelves, :id, :position_and_genre)
   = f.submit class: "ui button blue"
 
 = link_to "戻る", new_book_path, class: "ui button teal"

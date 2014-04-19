@@ -1,0 +1,12 @@
+h1 蔵書の登録
+  = form_for @biblio, url: biblio_confirm_path do |f|
+    .ui.form.segment.small
+      .field
+        = f.label :shelf_id
+        .ui.labeled.input.left
+          = f.text_field :shelf_id, autofocus: true
+      .field
+        f.submit "確認", class: "ui submit blue button"
+
+javascript:
+  $("input[type=text]").focus()

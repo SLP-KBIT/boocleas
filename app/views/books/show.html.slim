@@ -1,0 +1,21 @@
+
+.ui.segment.green
+  table.ui.basic
+      tr
+        th タイトル
+        td = @book.title
+      tr
+        th 著者
+        td = @book.author
+      tr
+        th ISBN
+        td = @book.isbn
+      tr
+        th 出版社
+        td = @book.publisher
+      tr
+        th 出版日
+        td = @book.published_at
+      tr
+        th キーワード
+        td = @book.keyword

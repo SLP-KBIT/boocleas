@@ -1,0 +1,14 @@
+h1 棚一覧
+
+table.ui.table.small
+  thead
+    tr
+      th room
+      th position
+      th genre
+  tbody
+    - @shelves.each do |shelf|
+      tr
+        td = shelf.room
+        td = shelf.position
+        td = shelf.genre

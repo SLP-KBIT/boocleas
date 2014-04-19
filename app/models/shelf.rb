@@ -11,4 +11,8 @@
 #
 
 class Shelf < ActiveRecord::Base
+  has_many :biblios
+  def position_and_genre
+    position + " : " + genre
+  end
 end

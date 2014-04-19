@@ -12,6 +12,8 @@ class BooksController < ApplicationController
     render text: "本が見つかりませんでした。" and return unless params_from_api
     @api = params_from_api
     @book = Book.new(params_from_api)
+    @book.biblios.build
+    @shelves = Shelf.all
   end
   def create
     @book = Book.new(book_params)
@@ -23,8 +25,14 @@ class BooksController < ApplicationController
     flash[:success] = "書籍を登録しました。"
     redirect_to new_book_path
   end
+  def show
+    @book = Book.where(id: params[:id]).first if params[:id]
+  end
+
   private
   def book_params
-    params.require(:book).permit(%i(title author isbn publisher published_at keyword))
+    params.require(:book).permit(:title, :author, :isbn, :publisher, :published_at, :keyword,
+      biblios_attributes: [:shelf_id]
+    )
   end
 end

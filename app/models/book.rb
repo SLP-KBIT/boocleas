@@ -15,4 +15,6 @@
 #
 
 class Book < ActiveRecord::Base
+  has_many :biblios
+  accepts_nested_attributes_for :biblios
 end
