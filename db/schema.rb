@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20140417180128) do
     t.datetime "updated_at"
   end
 
-  add_index "biblios", ["book_id"], name: "index_biblios_on_book_id", using: :btree
-  add_index "biblios", ["shelf_id"], name: "index_biblios_on_shelf_id", using: :btree
+  add_index "biblios", ["book_id"], name: "index_biblios_on_book_id"
+  add_index "biblios", ["shelf_id"], name: "index_biblios_on_shelf_id"
 
   create_table "books", force: true do |t|
     t.string   "isbn"
