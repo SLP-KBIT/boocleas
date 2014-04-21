@@ -54,3 +54,8 @@ end
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'slim'
+
+# auth
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
