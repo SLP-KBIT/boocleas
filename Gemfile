@@ -59,4 +59,4 @@ gem 'slim'
 # auth
 gem 'devise'
 gem 'omniauth'
-gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2', github: 'zquestz/omniauth-google-oauth2'
