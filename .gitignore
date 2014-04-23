@@ -18,3 +18,5 @@
 *~
 *#*
 *.swp
+
+config/ldap.yml

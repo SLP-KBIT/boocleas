@@ -36,6 +36,7 @@ GEM
       activerecord (>= 2.3.0)
       rake (>= 0.8.7)
     arel (4.0.2)
+    bcrypt (3.1.7)
     better_errors (1.1.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -51,6 +52,15 @@ GEM
       execjs
     coffee-script-source (1.7.0)
     debug_inspector (0.0.2)
+    devise (3.2.4)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise_ldap_authenticatable (0.8.1)
+      devise (>= 3.0)
+      net-ldap (>= 0.3.1, < 0.6.0)
     erubis (2.7.0)
     execjs (2.0.2)
     hike (1.2.3)
@@ -70,6 +80,8 @@ GEM
     mime-types (1.25.1)
     minitest (4.7.5)
     multi_json (1.9.2)
+    net-ldap (0.5.1)
+    orm_adapter (0.5.0)
     polyglot (0.3.4)
     pry (0.9.12.6)
       coderay (~> 1.0)
@@ -138,6 +150,8 @@ GEM
     uglifier (2.5.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
 
 PLATFORMS
   ruby
@@ -147,6 +161,8 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   coffee-rails (~> 4.0.0)
+  devise
+  devise_ldap_authenticatable
   jbuilder (~> 1.2)
   jquery-rails
   pry-rails

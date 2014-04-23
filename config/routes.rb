@@ -1,4 +1,5 @@
 BookAdmin::Application.routes.draw do
+  devise_for :users
   get "books/index"
   resources :books
   post "books/confirm", as: "book_confirm"

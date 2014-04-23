@@ -55,3 +55,6 @@ end
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
 gem 'slim'
+
+gem 'devise'
+gem 'devise_ldap_authenticatable'
