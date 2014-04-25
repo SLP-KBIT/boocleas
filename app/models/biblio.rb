@@ -13,4 +13,5 @@
 class Biblio < ActiveRecord::Base
   belongs_to :book
   belongs_to :shelf
+  has_many :lent_histories
 end
