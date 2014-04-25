@@ -7,18 +7,35 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="ui menu">
-  <%= link_to "Book", books_index_path, class: "item" + (current_page?(books_index_path) ? " active" : "" ) %>
-  <%= link_to "Biblio", biblios_path, class: "item" + (current_page?(biblios_path) ? " active" : "" ) %>
-  <%= link_to "Shelf", shelves_path, class: "item" + (current_page?(shelves_path) ? " active" : "" ) %>
-  <%= link_to "User", users_path, class: "item" + (current_page?(users_path) ? " active" : "" ) %>
-  <% sign_out_icon = capture do %>
-    <%= current_user.try :uid %> <i class="sign out icon"></i>
-  <% end %>
-  <%= link_to_if current_user, sign_out_icon ,destroy_user_session_path, { method: :delete , class: "item right" } %>
-</div>
+  <div class="ui menu">
+    <%= link_to "Book", books_index_path, class: "item" + (current_page?(books_index_path) ? " active" : "" ) %>
+    <%= link_to "Biblio", biblios_path, class: "item" + (current_page?(biblios_path) ? " active" : "" ) %>
+    <%= link_to "Shelf", shelves_path, class: "item" + (current_page?(shelves_path) ? " active" : "" ) %>
 
-<%= yield %>
+    <div class="menu right">
+      <% if current_user.try(:is_admin) %>
+        <div class="ui dropdown item">
+          <i class="icon settings"></i>管理機能<i class="icon dropdown"></i>
+          <div class="menu">
+            <%= link_to users_path, class: "item" do %>
+              <i class="icon users"></i>Users
+            <% end %>
+          </div>
+        </div>
+      <%end%>
 
+      <% if current_user %>
+        <%= link_to destroy_user_session_path, { method: :delete , class: "item" } do %>
+          <%= current_user.try :uid %> <i class="sign out icon"></i>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+
+  <%= yield %>
+
+  <script>
+    $(".menu .dropdown").dropdown();
+  </script>
 </body>
 </html>
