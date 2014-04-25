@@ -3,12 +3,14 @@ h1 蔵書一覧
 table.ui.table
   thead
     tr
+      th
       th 書籍
       th 本棚
       th 登録者
   tbody
     - @biblios.each do |biblio|
       tr
+        td = link_to raw('<i class="icon reply mail"></i>'), new_lent_history_path(biblio_id: biblio.id), class: "ui button icon small blue circular"
         td = link_to biblio.book.title, biblio.book
         td = biblio.shelf.position_and_genre
         td = biblio.registrant || "未登録"

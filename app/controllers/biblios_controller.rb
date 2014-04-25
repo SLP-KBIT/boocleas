@@ -1,6 +1,6 @@
 class BibliosController < ApplicationController
   def index
-    @biblios = Biblio.all
+    @biblios = Biblio.lendable
   end
   def new
     @book = Book.where(id: params[:book_id]).first
