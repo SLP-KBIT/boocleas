@@ -1,3 +1,7 @@
+- if flash[:error]
+  .ui.message.red
+    = flash[:error]
+
 .ui.grid
   .ui.five.wide.column
     .ui.form.segment
@@ -11,7 +15,6 @@
         .field
           = f.label :貸出可能
           = f.check_box :is_lendable
-
         .field
           = f.label :管理者
           = f.check_box :is_admin

@@ -1,5 +1,9 @@
 h1 ユーザ一覧
 
+- if flash[:success]
+  .ui.green.message
+    = flash[:success]
+
 table.ui.table
   thead
     tr
