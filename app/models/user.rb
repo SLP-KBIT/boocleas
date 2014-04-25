@@ -26,8 +26,7 @@ class User < ActiveRecord::Base
   devise :ldap_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   before_save :get_ldap_gecos
-  validates :is_admin, inclusion: { in: [ true, false ] }
-  validates :is_lendable, inclusion: { in: [ true, false ] }
+  before_create :set_flags
 
   def get_ldap_gecos
     self.gecos = Devise::LDAP::Adapter.get_ldap_param(self.uid, "gecos").first
@@ -39,5 +38,10 @@ class User < ActiveRecord::Base
 
   def email_changed?
     false
+  end
+
+  def set_flags
+    self.is_admin = false
+    self.is_lendable = true
   end
 end
