@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140424180909) do
+ActiveRecord::Schema.define(version: 20140424184232) do
 
   create_table "biblios", force: true do |t|
     t.integer  "book_id"
@@ -58,6 +58,8 @@ ActiveRecord::Schema.define(version: 20140424180909) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "gecos"
+    t.boolean  "is_admin"
+    t.boolean  "is_lendable"
   end
 
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
