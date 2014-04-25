@@ -1,0 +1,22 @@
+h1 貸出
+
+table.ui.basic.table
+  tbody
+    tr
+      th タイトル
+      td = @history.biblio.book.title
+    tr
+      th 著者
+      td = @history.biblio.book.author
+    tr
+      th 出版社
+      td = @history.biblio.book.publisher
+    tr
+      th 棚 : ジャンル
+      td = @history.biblio.shelf.position_and_genre
+
+= form_for @history do |f|
+  .ui.form
+    .field
+      = f.hidden_field :biblio_id, value: @history.biblio_id
+    = f.submit "貸出", class: "ui button submit blue"

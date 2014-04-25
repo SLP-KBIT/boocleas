@@ -26,4 +26,12 @@ class LentHistory < ActiveRecord::Base
   def state_to_action
     STATE_ACTIONS[state]
   end
+
+  def lendable?
+    self.state == LENDABLE
+  end
+
+  def out?
+    self.state == OUT
+  end
 end
