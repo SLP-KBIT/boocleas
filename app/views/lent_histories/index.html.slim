@@ -1,0 +1,16 @@
+h1 LentHistory#index
+
+table.ui.table.segment
+  thead
+    tr
+    th 蔵書
+    th ユーザ
+    th アクション
+    th 日時
+  tbody
+    - @histories.each do |history|
+      tr
+        td = history.biblio.book.title
+        td = history.user.uid
+        td = history.state
+        td = history.created_at

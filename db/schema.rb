@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425172503) do
+ActiveRecord::Schema.define(version: 20140425173701) do
 
   create_table "biblios", force: true do |t|
     t.integer  "book_id"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20140425172503) do
   create_table "lent_histories", force: true do |t|
     t.integer  "biblio_id"
     t.integer  "user_id"
-    t.datetime "wil_return_at"
+    t.datetime "will_return_at"
     t.integer  "state"
     t.datetime "created_at"
     t.datetime "updated_at"

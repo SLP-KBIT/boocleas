@@ -8,6 +8,7 @@ BookAdmin::Application.routes.draw do
   post "biblios/confirm", as: "biblio_confirm"
   resources :shelves
   resources :users
+  resources :lent_histories
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
