@@ -14,4 +14,16 @@
 class LentHistory < ActiveRecord::Base
   belongs_to :biblio
   belongs_to :user
+
+  LENDABLE = 0
+  OUT = 1
+
+  STATE_ACTIONS = {
+    LENDABLE => "返却",
+    OUT      => "貸出"
+  }
+
+  def state_to_action
+    STATE_ACTIONS[state]
+  end
 end
