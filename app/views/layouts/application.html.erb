@@ -11,6 +11,7 @@
   <%= link_to "Book", books_index_path, class: "item" + (current_page?(books_index_path) ? " active" : "" ) %>
   <%= link_to "Biblio", biblios_path, class: "item" + (current_page?(biblios_path) ? " active" : "" ) %>
   <%= link_to "Shelf", shelves_path, class: "item" + (current_page?(shelves_path) ? " active" : "" ) %>
+  <%= link_to "User", users_path, class: "item" + (current_page?(users_path) ? " active" : "" ) %>
   <% sign_out_icon = capture do %>
     <%= current_user.try :uid %> <i class="sign out icon"></i>
   <% end %>

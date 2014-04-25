@@ -1,0 +1,18 @@
+.ui.grid
+  .ui.five.wide.column
+    .ui.form.segment
+      = form_for @user do |f|
+        .field
+          = f.label :アカウント
+          = f.text_field :uid, disabled: true
+        .field
+          = f.label :gecos
+          = f.text_field :gecos, disabled: true
+        .field
+          = f.label :貸出可能
+          = f.check_box :is_lendable
+
+        .field
+          = f.label :管理者
+          = f.check_box :is_admin
+        = f.submit "変更", class: "ui button submit blue"
