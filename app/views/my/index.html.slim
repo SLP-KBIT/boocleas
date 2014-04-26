@@ -14,7 +14,8 @@ table.ui.table.grid
   tbody
     - @biblios.each do |biblio|
       tr
-        td = link_to "返却", lent_histories_return_new_path(biblio_id: biblio.id)
+        td = link_to lent_histories_return_new_path(biblio_id: biblio.id), class: "ui icon small circular button" do
+          <i class="icon reply mail blue"></i>
         td = biblio.book.title
         td = biblio.book.author
         td = biblio.book.publisher
