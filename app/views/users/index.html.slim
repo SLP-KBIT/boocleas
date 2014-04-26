@@ -1,4 +1,8 @@
-h1 ユーザ一覧
+h2.ui.header
+  |ユーザ
+  .sub.header
+    |登録されているユーザの一覧です。ここではユーザの権限の操作ができます。<br>
+    |poulencのLDAPで認証している関係上、一度もログインしていないユーザは表示されません。
 
 - if flash[:success]
   .ui.green.message
