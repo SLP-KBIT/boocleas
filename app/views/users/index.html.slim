@@ -21,6 +21,6 @@ table.ui.table
       tr
         td = user.uid
         td = user.gecos
-        td = user.is_lendable ? "可能" : "禁止"
-        td = user.is_admin ? "有効" : "無効"
+        td = check_or_ban_icon(user.is_lendable)
+        td = check_or_ban_icon(user.is_admin)
         td = link_to "編集", edit_user_path(user.id)
