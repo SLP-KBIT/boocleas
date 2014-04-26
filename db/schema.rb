@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425173701) do
+ActiveRecord::Schema.define(version: 20140426162948) do
 
   create_table "biblios", force: true do |t|
     t.integer  "book_id"
     t.integer  "shelf_id"
-    t.string   "registrant"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "registrant_id"
   end
 
   add_index "biblios", ["book_id"], name: "index_biblios_on_book_id"

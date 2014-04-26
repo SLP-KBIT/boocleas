@@ -2,17 +2,18 @@
 #
 # Table name: biblios
 #
-#  id         :integer          not null, primary key
-#  book_id    :integer
-#  shelf_id   :integer
-#  registrant :string(255)
-#  created_at :datetime
-#  updated_at :datetime
+#  id            :integer          not null, primary key
+#  book_id       :integer
+#  shelf_id      :integer
+#  created_at    :datetime
+#  updated_at    :datetime
+#  registrant_id :integer
 #
 
 class Biblio < ActiveRecord::Base
   belongs_to :book
   belongs_to :shelf
+  belongs_to :registrant, class_name: User
   has_many :lent_histories
   has_many :users, through: :lent_histories
 

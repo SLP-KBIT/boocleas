@@ -2,13 +2,13 @@
 #
 # Table name: lent_histories
 #
-#  id            :integer          not null, primary key
-#  biblio_id     :integer
-#  user_id       :integer
-#  wil_return_at :datetime
-#  state         :integer
-#  created_at    :datetime
-#  updated_at    :datetime
+#  id             :integer          not null, primary key
+#  biblio_id      :integer
+#  user_id        :integer
+#  will_return_at :datetime
+#  state          :integer
+#  created_at     :datetime
+#  updated_at     :datetime
 #
 
 class LentHistory < ActiveRecord::Base
