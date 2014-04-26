@@ -16,7 +16,7 @@ class LentHistoriesController < ApplicationController
     render '/public/404.html' and return unless biblio.changeable_to?(state_from_commit)
     @history = biblio.lent_histories.build(user_id: current_user.id, state: state_from_commit)
     render '/public/404.html' and return unless @history.save
-    redirect_to books_index_path
+    redirect_to my_path
   end
 
   private
