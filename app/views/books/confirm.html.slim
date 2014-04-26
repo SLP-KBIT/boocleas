@@ -1,4 +1,4 @@
-h1 book confirm
+h2 book confirm
 
 table.ui.table.segment
   tr
@@ -30,7 +30,7 @@ table.ui.table.segment
   .ui.segment
     = f.fields_for :biblios do |biblio|
       = biblio.label :shelf
-      = biblio.collection_select(:shelf_id, @shelves, :id, :position_and_genre)
+      = biblio.select :shelf_id, @shelves.map {|s| [s.position_and_genre, s.id] }, { include_blank: true }, { class: 'chosen-select' }
   = f.submit class: "ui button blue"
 
 = link_to "戻る", new_book_path, class: "ui button teal"

@@ -58,3 +58,5 @@ gem 'slim'
 
 gem 'devise'
 gem 'devise_ldap_authenticatable'
+
+gem 'chosen-rails'
