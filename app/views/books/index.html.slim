@@ -1,5 +1,7 @@
-h1
-  =raw "Books#index <small>" + link_to("登録", new_book_path, class: "ui button small blue") + "</small>"
+h2.ui.header
+  =raw "書籍 <small>" + link_to("登録", new_book_path, class: "ui button small blue") + "</small>"
+  .sub.header
+    |登録された書籍の一覧です。
 
 table.ui.table
   thead
