@@ -10,5 +10,6 @@
  *
  *= require_self
  *= require semantic-ui
+ *= require chosen
  *= require_tree .
  */
