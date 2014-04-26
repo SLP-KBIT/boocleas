@@ -9,7 +9,6 @@
 <body>
   <div class="ui menu">
     <%= link_to "My", my_path, class: "item" + (current_page?(my_path) ? " active" : "" ) %>
-    <%= link_to "Book", books_index_path, class: "item" + (current_page?(books_index_path) ? " active" : "" ) %>
     <%= link_to "Biblio", biblios_path, class: "item" + (current_page?(biblios_path) ? " active" : "" ) %>
     <%= link_to "LentHistory", lent_histories_path, class: "item" + (current_page?(lent_histories_path) ? " active" : "" ) %>
     <%= link_to "Shelf", shelves_path, class: "item" + (current_page?(shelves_path) ? " active" : "" ) %>
@@ -21,6 +20,9 @@
           <div class="menu">
             <%= link_to users_path, class: "item" do %>
               <i class="icon users"></i>Users
+            <% end %>
+            <%= link_to  books_index_path, class: "item" do %>
+              <i class="icon book"></i>Books
             <% end %>
           </div>
         </div>
