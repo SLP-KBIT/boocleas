@@ -16,6 +16,8 @@ class LentHistoriesController < ApplicationController
     render '/public/404.html' and return unless biblio.changeable_to?(state_from_commit)
     @history = biblio.lent_histories.build(user_id: current_user.id, state: state_from_commit)
     render '/public/404.html' and return unless @history.save
+    flash[:success] = "#{@history.biblio.book.title} を貸し出しました。" if params[:commit] == "貸出"
+    flash[:success] = "#{@history.biblio.book.title} を返却しました。" if params[:commit] == "返却"
     redirect_to my_path
   end
 

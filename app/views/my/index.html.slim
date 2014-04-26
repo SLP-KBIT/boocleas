@@ -3,6 +3,10 @@ h2.ui.header
   .sub.header
     |現在あなたが借りている蔵書の一覧です。忘れずに返却期限までに返却してください。
 
+- if flash[:success]
+  .ui.green.message
+    = flash[:success]
+
 table.ui.table.grid
   thead
     tr
