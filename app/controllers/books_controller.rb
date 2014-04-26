@@ -20,6 +20,7 @@ class BooksController < ApplicationController
   end
   def create
     @book = Book.new(book_params)
+    @book.registrant_id = current_user.id
     @book = nil unless @book.save
     unless @book
       flash.now[:error] = "書籍の追加に失敗しました。"
