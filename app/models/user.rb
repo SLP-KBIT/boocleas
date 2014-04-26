@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   before_create :set_flags
 
   has_many :lent_histories
+  has_many :biblios, through: :lent_histories
 
   def get_ldap_gecos
     self.gecos = Devise::LDAP::Adapter.get_ldap_param(self.uid, "gecos").first

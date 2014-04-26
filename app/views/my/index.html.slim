@@ -1,0 +1,18 @@
+h1 借りている蔵書
+
+table.ui.table.grid
+  thead
+    tr
+      th
+      th タイトル
+      th 著者
+      th 出版社
+      th 棚 : ジャンル
+  tbody
+    - @biblios.each do |biblio|
+      tr
+        td = link_to "返却", lent_histories_return_new_path(biblio_id: biblio.id)
+        td = biblio.book.title
+        td = biblio.book.author
+        td = biblio.book.publisher
+        td = biblio.shelf.position_and_genre

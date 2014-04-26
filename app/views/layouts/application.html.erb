@@ -8,6 +8,7 @@
 </head>
 <body>
   <div class="ui menu">
+    <%= link_to "My", my_path, class: "item" + (current_page?(my_path) ? " active" : "" ) %>
     <%= link_to "Book", books_index_path, class: "item" + (current_page?(books_index_path) ? " active" : "" ) %>
     <%= link_to "Biblio", biblios_path, class: "item" + (current_page?(biblios_path) ? " active" : "" ) %>
     <%= link_to "LentHistory", lent_histories_path, class: "item" + (current_page?(lent_histories_path) ? " active" : "" ) %>

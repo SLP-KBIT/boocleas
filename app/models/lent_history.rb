@@ -23,6 +23,8 @@ class LentHistory < ActiveRecord::Base
     OUT      => "貸出"
   }
 
+  scope :lent_to, -> (user) { where(user_id: user.id).group(:biblio_id).having(state: OUT) }
+
   def state_to_action
     STATE_ACTIONS[state]
   end
