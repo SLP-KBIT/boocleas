@@ -21,6 +21,10 @@ class Biblio < ActiveRecord::Base
     self.all.select(&:lendable?)
   end
 
+  def self.out
+    LentHistory.out.map(&:biblio)
+  end
+
   def lent_to?(user)
     self.out? && self.lent_histories.order(:id).last.user == user
   end
