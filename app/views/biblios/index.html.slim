@@ -3,6 +3,11 @@ h2.ui.header
   .sub.header
     |貸出可能な蔵書の一覧です。
 
+.ui.segment.green
+  = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
+    = f.select :state, { 貸出可能: 0, 貸出中: 1 }
+    = f.submit '検索icon', class: 'ui submit green small button'
+
 table.ui.table
   thead
     tr
@@ -13,8 +18,9 @@ table.ui.table
   tbody
     - @biblios.each do |biblio|
       tr
-        td = link_to new_lent_history_path(biblio_id: biblio.id) , class: "ui icon small circular button" do
-          <i class="icon forward mail blue"></i>
+        - if @biblio_form.state == LentHistory::LENDABLE
+          td = link_to new_lent_history_path(biblio_id: biblio.id) , class: "ui icon small circular button" do
+            <i class="icon forward mail blue"></i>
         td = link_to biblio.book.title, biblio.book
         td = biblio.shelf.position_and_genre
         td = biblio.registrant.uid
