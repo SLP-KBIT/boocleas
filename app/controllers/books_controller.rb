@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 require 'ndl'
 
 class BooksController < ApplicationController
-  before_action :admin_only!
+  before_action :admin_only!, except: :show
   def index
     @books = Book.all
   end
