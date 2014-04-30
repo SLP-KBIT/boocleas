@@ -1,4 +1,5 @@
 class LentHistoriesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @histories = LentHistory.all
   end

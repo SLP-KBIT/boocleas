@@ -1,4 +1,5 @@
 class BibliosController < ApplicationController
+  before_action :authenticate_user!
   def index
     form_params = params[:biblio_form] || nil
     @biblio_form = BiblioForm.new form_params
