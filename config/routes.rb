@@ -1,5 +1,5 @@
 BookAdmin::Application.routes.draw do
-  root 'books#index'
+  root 'my#index'
   devise_for :users
   get "books/index"
   resources :books

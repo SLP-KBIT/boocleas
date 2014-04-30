@@ -2,8 +2,7 @@
 require 'ndl'
 
 class BooksController < ApplicationController
-  before_action :authenticate_user!
-
+  before_action :admin_only!
   def index
     @books = Book.all
   end
