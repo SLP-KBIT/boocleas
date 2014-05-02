@@ -8,10 +8,10 @@
 </head>
 <body>
   <div class="ui menu">
-    <%= link_to "My", my_path, class: "item" + (current_page?(my_path) ? " active" : "" ) %>
-    <%= link_to "Biblio", biblios_path, class: "item" + (current_page?(biblios_path) ? " active" : "" ) %>
-    <%= link_to "LentHistory", lent_histories_path, class: "item" + (current_page?(lent_histories_path) ? " active" : "" ) %>
-    <%= link_to "Shelf", shelves_path, class: "item" + (current_page?(shelves_path) ? " active" : "" ) %>
+    <%= link_to "マイページ", my_path, class: "item" + (current_page?(my_path) ? " active" : "" ) %>
+    <%= link_to "蔵書", biblios_path, class: "item" + (current_page?(biblios_path) ? " active" : "" ) %>
+    <%= link_to "貸出履歴", lent_histories_path, class: "item" + (current_page?(lent_histories_path) ? " active" : "" ) %>
+    <%= link_to "棚", shelves_path, class: "item" + (current_page?(shelves_path) ? " active" : "" ) %>
 
     <div class="menu right">
       <% if current_user.try(:is_admin) %>
