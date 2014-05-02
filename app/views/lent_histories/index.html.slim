@@ -13,7 +13,7 @@ table.ui.table.segment
   tbody
     - @histories.each do |history|
       tr
-        td = history.biblio.book.title
+        td = link_to history.biblio.book.title, history.biblio
         td = history.user.uid
         td = history.state_to_action
         td = history.created_at
