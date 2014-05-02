@@ -1,0 +1,26 @@
+h2.ui.header
+  | 蔵書詳細
+
+table.ui.table.basic
+  tr
+    th タイトル
+    td = @biblio.book.title
+  tr
+    th 著者
+    td = @biblio.book.author
+  tr
+    th ISBN
+    td = @biblio.book.isbn
+  tr
+    th 出版社
+    td = @biblio.book.publisher
+  tr
+    th キーワード
+    td = @biblio.book.keyword
+  tr
+    th 本棚
+    td = @biblio.shelf.position_and_genre
+
+- if @biblio.lendable?
+  = link_to new_lent_history_path(biblio_id: @biblio.id) , class: "ui icon small circular button" do
+    <i class="icon forward mail blue"></i>借りる

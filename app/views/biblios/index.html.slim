@@ -1,7 +1,7 @@
 h2.ui.header
   |蔵書
   .sub.header
-    |貸出可能な蔵書の一覧です。
+    |保有している蔵書の一覧です。
 
 .ui.segment.green
   = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
@@ -12,9 +12,8 @@ table.ui.table
   thead
     tr
       th
-      th 書籍
-      th 本棚
-      th 登録者
+      th タイトル
+      th 棚 : ジャンル
   tbody
     - @biblios.each do |biblio|
       tr
@@ -23,4 +22,3 @@ table.ui.table
             <i class="icon forward mail blue"></i>借りる
         td = link_to biblio.book.title, biblio.book
         td = biblio.shelf.position_and_genre
-        td = biblio.registrant.uid
