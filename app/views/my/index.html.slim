@@ -6,6 +6,9 @@ h2.ui.header
 - if flash[:success]
   .ui.green.message
     = flash[:success]
+- if flash[:error]
+  .ui.red.message
+    = flash[:error]
 
 table.ui.table.grid
   thead
