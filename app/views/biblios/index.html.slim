@@ -20,7 +20,7 @@ table.ui.table
       tr
         - if @biblio_form.state == LentHistory::LENDABLE
           td = link_to new_lent_history_path(biblio_id: biblio.id) , class: "ui icon small circular button" do
-            <i class="icon forward mail blue"></i>
+            <i class="icon forward mail blue"></i>借りる
         td = link_to biblio.book.title, biblio.book
         td = biblio.shelf.position_and_genre
         td = biblio.registrant.uid
