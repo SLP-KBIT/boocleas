@@ -1,7 +1,7 @@
 h2.ui.header
-  |借りている蔵書
+  |マイページ
   .sub.header
-    |現在あなたが借りている蔵書の一覧です。忘れずに返却期限までに返却してください。
+    |現在借りている蔵書返却や、過去の貸出履歴を確認できます。
 
 - if flash[:success]
   .ui.green.message
@@ -10,20 +10,36 @@ h2.ui.header
   .ui.red.message
     = flash[:error]
 
-table.ui.table.grid
-  thead
-    tr
-      th
-      th タイトル
-      th 著者
-      th 出版社
-      th 棚 : ジャンル
-  tbody
-    - @biblios.each do |biblio|
+.ui.segment.green
+  h3.ui.header
+    |借りている蔵書
+
+  table.ui.table.grid
+    thead
       tr
-        td = link_to lent_histories_return_new_path(biblio_id: biblio.id), class: "ui icon small circular button" do
-          <i class="icon reply mail blue"></i>
-        td = biblio.book.title
-        td = biblio.book.author
-        td = biblio.book.publisher
-        td = biblio.shelf.position_and_genre
+        th
+        th タイトル
+        th 著者
+        th 出版社
+        th 棚 : ジャンル
+    tbody
+      - @biblios.each do |biblio|
+        tr
+          td = link_to lent_histories_return_new_path(biblio_id: biblio.id), class: "ui icon small circular button" do
+            <i class="icon reply mail blue"></i>
+          td = biblio.book.title
+          td = biblio.book.author
+          td = biblio.book.publisher
+          td = biblio.shelf.position_and_genre
+
+.ui.segment.green
+  h3.ui.header
+    |最近借りた蔵書
+  table.ui.table.grid
+    thead
+      tr
+        th タイトル
+    tbody
+      - @histories.each do |history|
+        tr
+          td = link_to history.biblio.book.title, history.biblio
