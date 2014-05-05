@@ -17,6 +17,8 @@ class Biblio < ActiveRecord::Base
   has_many :lent_histories
   has_many :users, through: :lent_histories
 
+  before_save :default_save
+
   def self.lendable
     self.all.select(&:lendable?)
   end
@@ -39,5 +41,11 @@ class Biblio < ActiveRecord::Base
 
   def changeable_to?(next_state)
      self.lent_histories.empty? || self.lent_histories.last.state != next_state
+  end
+
+  private
+
+  def default_shelf
+    self.shelf_id = Shelf.where(position: "未登録").first.id
   end
 end
