@@ -1,4 +1,7 @@
-h2.ui.header 貸出
+h2.ui.header
+  |貸出
+  .sub.header
+    |このページで表示されている返却期限は暫定的なもので、マイページに表示されるものがより正確なものです。。貸出を確定した時点からの時間計算を行うため、ここでは正確な時間の表示ができません。
 
 table.ui.basic.table
   tbody
@@ -14,6 +17,12 @@ table.ui.basic.table
     tr
       th 棚 : ジャンル
       td = @history.biblio.shelf.position_and_genre
+    tr
+      th 最大貸出期間
+      td #{current_user.group.max_lent_week}週間
+    tr
+      th 返却期限
+      td = DateTime.now + current_user.group.max_lent_week.weeks
 
 = form_for @history do |f|
   .ui.form

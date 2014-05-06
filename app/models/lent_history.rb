@@ -14,7 +14,7 @@
 class LentHistory < ActiveRecord::Base
   belongs_to :biblio
   belongs_to :user
-
+  after_create :set_will_return_at
   LENDABLE = 0
   OUT = 1
 
@@ -36,5 +36,14 @@ class LentHistory < ActiveRecord::Base
 
   def out?
     self.state == OUT
+  end
+
+  private
+
+  def set_will_return_at
+    if self.out?
+      self.will_return_at = self.created_at + self.user.group.max_lent_week.weeks
+      self.save
+    end
   end
 end

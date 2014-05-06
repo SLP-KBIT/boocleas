@@ -10,6 +10,7 @@ table.ui.table.segment.grid
     th アカウント
     th アクション
     th 日時
+    th 返却予定
   tbody
     - @histories.each do |history|
       tr
@@ -17,3 +18,7 @@ table.ui.table.segment.grid
         td = history.user.uid
         td = history.state_to_action
         td = history.created_at
+        - if history.will_return_at
+          td = history.will_return_at
+        - elsif history.lendable?
+          td -
