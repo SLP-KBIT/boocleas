@@ -11,7 +11,8 @@ h2.ui.header
 table.ui.table.grid
   thead
     tr
-      th
+      - if @biblio_form.state == LentHistory::LENDABLE
+        th
       th タイトル
       th 棚 : ジャンル
   tbody
