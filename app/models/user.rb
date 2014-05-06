@@ -18,6 +18,7 @@
 #  gecos                  :text
 #  is_admin               :boolean
 #  is_lendable            :boolean
+#  group_id               :integer
 #
 
 class User < ActiveRecord::Base
@@ -26,10 +27,11 @@ class User < ActiveRecord::Base
   devise :ldap_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   before_save :get_ldap_gecos
-  before_create :set_flags
+  before_create :set_defaults
 
   has_many :lent_histories
   has_many :biblios, through: :lent_histories
+  belongs_to :group
 
   def get_ldap_gecos
     self.gecos = Devise::LDAP::Adapter.get_ldap_param(self.uid, "gecos").first
@@ -43,8 +45,9 @@ class User < ActiveRecord::Base
     false
   end
 
-  def set_flags
+  def set_defaults
     self.is_admin = false
     self.is_lendable = true
+    self.group = Group.where(name: "Club").first
   end
 end

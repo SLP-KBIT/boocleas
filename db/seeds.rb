@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Group.create(name: "Club", max_lent_week: 2)
+
 ##############################################################
 # 入力補助用のサンプル コピペして、不要な行を削除、編集して使う
 ##############################################################

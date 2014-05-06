@@ -15,6 +15,7 @@ table.ui.table.grid
   thead
     tr
       th アカウント
+      th グループ
       th gecos情報
       th 貸出
       th 管理者
@@ -23,6 +24,7 @@ table.ui.table.grid
     - @users.each do |user|
       tr
         td = user.uid
+        td = user.group.name
         td = user.gecos
         td = check_or_ban_icon(user.is_lendable)
         td = check_or_ban_icon(user.is_admin)
