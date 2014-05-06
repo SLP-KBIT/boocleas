@@ -5,8 +5,17 @@ h2.ui.header
 
 .ui.segment.green
   = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
-    = f.select :state, { 貸出可能: 0, 貸出中: 1 }
-    = f.submit '検索icon', class: 'ui submit green small button'
+    #biblio_form_state.ui.selection.dropdown.inline
+      input type="hidden" name="biblio_form[state]"
+        .text = @biblio_form.state_name
+        i.dropdown.icon
+      .menu
+        .item.active data-value="0"
+          |貸出可能
+        .item data-value="1"
+          |貸出中
+    = f.button type: :submit, name: "submit", value: "検索", class: 'ui green small green button'  do
+      |<i class="search icon"></i>
 
 table.ui.table.grid
   thead
@@ -27,3 +36,6 @@ table.ui.table.grid
         td = biblio.shelf.position_and_genre
         - if @biblio_form.state == LentHistory::OUT
           td = biblio.lent_histories.last.will_return_at
+
+javascript:
+  $(".ui.selection.dropdown").dropdown();
