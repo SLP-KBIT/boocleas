@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140426162948) do
+ActiveRecord::Schema.define(version: 20140506172401) do
 
   create_table "biblios", force: true do |t|
     t.integer  "book_id"
@@ -34,6 +34,13 @@ ActiveRecord::Schema.define(version: 20140426162948) do
     t.datetime "updated_at"
     t.text     "title"
     t.datetime "published_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.integer  "max_lent_week"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "lent_histories", force: true do |t|
@@ -72,8 +79,10 @@ ActiveRecord::Schema.define(version: 20140426162948) do
     t.text     "gecos"
     t.boolean  "is_admin"
     t.boolean  "is_lendable"
+    t.integer  "group_id"
   end
 
+  add_index "users", ["group_id"], name: "index_users_on_group_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   add_index "users", ["uid"], name: "index_users_on_uid", unique: true
 

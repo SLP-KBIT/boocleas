@@ -1,0 +1,22 @@
+h2.ui.header
+  |グループ
+  .sub.header
+    |ユーザが所属するグループの一覧です。グループによって期間などの貸出関連の権限を管理します。
+
+- if flash[:success]
+  .ui.green.message
+    = flash[:success]
+
+.ui.segment.green
+  table.ui.table.grid
+    thead
+      tr
+        th 名前
+        th 最大貸出期間
+        th
+    tbody
+      - @groups.each do |group|
+        tr
+          td = group.name
+          td  #{group.max_lent_week}週間
+          td = link_to "編集", edit_group_path(group)

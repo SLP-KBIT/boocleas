@@ -19,7 +19,10 @@
           <i class="icon settings"></i>管理機能<i class="icon dropdown"></i>
           <div class="menu">
             <%= link_to users_path, class: "item" do %>
-              <i class="icon users"></i>Users
+              <i class="icon user"></i>Users
+            <% end %>
+            <%= link_to groups_path, class: "item" do %>
+              <i class="icon users"></i>Groups
             <% end %>
             <%= link_to  books_index_path, class: "item" do %>
               <i class="icon book"></i>Books

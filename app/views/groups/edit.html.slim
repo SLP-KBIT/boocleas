@@ -1,0 +1,15 @@
+- if flash[:error]
+  .ui.mesage.red
+    = flash[:error]
+
+.ui.grid
+  .ui.five.wide.column
+    .ui.form.segment
+      = form_for @group do |f|
+        .field
+          = f.label :名前
+          = f.text_field :name
+        .field
+          = f.label :最大貸出期間
+          = f.number_field :max_lent_week
+        = f.submit "変更", class: "ui button submit blue"
