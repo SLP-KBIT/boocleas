@@ -5,10 +5,12 @@ h2.ui.header
 
 .ui.segment.green
   = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
+
     #biblio_form_state.ui.selection.dropdown.inline
       input type="hidden" name="biblio_form[state]"
-        .text = @biblio_form.state_name
-        i.dropdown.icon
+      = f.hidden_field :state
+      .text = @biblio_form.state_name
+      i.dropdown.icon
       .menu
         .item.active data-value="0"
           |貸出可能
