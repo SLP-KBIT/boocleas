@@ -15,6 +15,8 @@ table.ui.table.grid
         th
       th タイトル
       th 棚 : ジャンル
+      - if @biblio_form.state == LentHistory::OUT
+        th 返却期限
   tbody
     - @biblios.each do |biblio|
       tr
@@ -23,3 +25,5 @@ table.ui.table.grid
             <i class="icon forward mail blue"></i>借りる
         td = link_to biblio.book.title, biblio.book
         td = biblio.shelf.position_and_genre
+        - if @biblio_form.state == LentHistory::OUT
+          td = biblio.lent_histories.last.will_return_at

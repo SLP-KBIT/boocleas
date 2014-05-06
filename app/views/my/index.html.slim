@@ -22,6 +22,7 @@ h2.ui.header
         th 著者
         th 出版社
         th 棚 : ジャンル
+        th 返却予定日
     tbody
       - @biblios.each do |biblio|
         tr
@@ -31,6 +32,7 @@ h2.ui.header
           td = biblio.book.author
           td = biblio.book.publisher
           td = biblio.shelf.position_and_genre
+          td = biblio.lent_histories.last.will_return_at
 
 .ui.segment.green
   h3.ui.header
