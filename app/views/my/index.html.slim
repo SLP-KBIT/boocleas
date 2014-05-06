@@ -39,7 +39,9 @@ h2.ui.header
     thead
       tr
         th タイトル
+        th 借りた日時
     tbody
       - @histories.each do |history|
         tr
           td = link_to history.biblio.book.title, history.biblio
+          td = history.created_at
