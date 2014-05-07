@@ -1,7 +1,11 @@
 class LentHistoriesController < ApplicationController
   before_action :authenticate_user!
   def index
-    @histories = LentHistory.all
+    # @histories = LentHistory.all
+    form_params = params[:lent_history_form] || nil
+    p fparams: form_params
+    @form = LentHistoryForm.new form_params
+    @histories = @form.search
   end
   def new
     biblio = get_biblio
