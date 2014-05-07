@@ -22,7 +22,7 @@ table.ui.basic.table
       td #{current_user.group.max_lent_week}週間
     tr
       th 返却期限
-      td = DateTime.now + current_user.group.max_lent_week.weeks
+      td = (DateTime.now + current_user.group.max_lent_week.weeks).to_s(:jp)
 
 = form_for @history do |f|
   .ui.form

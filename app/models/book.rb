@@ -17,4 +17,9 @@
 class Book < ActiveRecord::Base
   has_many :biblios
   accepts_nested_attributes_for :biblios
+  # before_create :parse_japanese_date_format
+
+  # def parse_japanese_date_format
+  #   Date.strptime(self.published_at, "%Y")
+  # end
 end
