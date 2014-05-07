@@ -8,6 +8,7 @@ h2.ui.header
     .ui.form
       .fields
         = f.text_field :title, class: "ui input four wide field", placeholder: " タイトル"
+        = f.text_field :date_range, class: "ui input four wide field daterange", placeholder: " 期間"
         = f.button type: :submit, name: :submit, value: :検索, class: "ui small green button icon"  do
           |<i class="icon search">
 
@@ -32,3 +33,7 @@ h2.ui.header
             td = history.will_return_at.to_s(:jp)
           - elsif history.lendable?
             td -
+
+
+coffee:
+  $(".daterange").dateRangePicker()
