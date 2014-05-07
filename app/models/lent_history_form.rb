@@ -1,7 +1,7 @@
 class LentHistoryForm
   include ActiveModel::Model
 
-  attr_accessor :title
+  attr_accessor :title, :date_range
 
   def initialize(attributes={})
     super
