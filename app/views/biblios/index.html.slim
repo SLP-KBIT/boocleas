@@ -7,7 +7,7 @@ h2.ui.header
   = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
     .ui.form
       .fields
-        = f.text_field :title, class: "ui input four wide field", placeholder: "タイトル"
+        = f.text_field :keyword, class: "ui input four wide field", placeholder: " 検索キーワード"
         #biblio_form_state.ui.selection.dropdown.field
           = f.hidden_field :state
           .text = @biblio_form.state_name
@@ -20,25 +20,26 @@ h2.ui.header
         = f.button type: :submit, name: "submit", value: "検索", class: 'ui green small green button'  do
           |<i class="search icon"></i>
 
-table.ui.table.grid
-  thead
-    tr
-      - if @biblio_form.state == LentHistory::LENDABLE
-        th
-      th タイトル
-      th 棚 : ジャンル
-      - if @biblio_form.state == LentHistory::OUT
-        th 返却期限
-  tbody
-    - @biblios.each do |biblio|
+.ui.segment.teal
+  table.ui.table.grid
+    thead
       tr
         - if @biblio_form.state == LentHistory::LENDABLE
-          td = link_to new_lent_history_path(biblio_id: biblio.id) , class: "ui icon small circular button" do
-            <i class="icon forward mail blue"></i>借りる
-        td = link_to biblio.book.title, biblio.book
-        td = biblio.shelf.position_and_genre
+          th
+        th タイトル
+        th 棚 : ジャンル
         - if @biblio_form.state == LentHistory::OUT
-          td = biblio.lent_histories.last.will_return_at
+          th 返却期限
+    tbody
+      - @biblios.each do |biblio|
+        tr
+          - if @biblio_form.state == LentHistory::LENDABLE
+            td = link_to new_lent_history_path(biblio_id: biblio.id) , class: "ui icon small circular button" do
+              <i class="icon forward mail blue"></i>借りる
+          td = link_to biblio.book.title, biblio.book
+          td = biblio.shelf.position_and_genre
+          - if @biblio_form.state == LentHistory::OUT
+            td = biblio.lent_histories.last.will_return_at
 
 javascript:
   $(".ui.selection.dropdown").dropdown();

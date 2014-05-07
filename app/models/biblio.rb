@@ -43,6 +43,11 @@ class Biblio < ActiveRecord::Base
      self.lent_histories.empty? || self.lent_histories.last.state != next_state
   end
 
+  def is_contain?(keyword)
+    keyword.downcase
+    [self.book.title, self.book.author, self.book.publisher, self.shelf.position_and_genre].select{ |e| e.downcase.include? keyword }.present?
+  end
+
   private
 
   def default_shelf
