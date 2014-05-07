@@ -5,19 +5,20 @@ h2.ui.header
 
 .ui.segment.green
   = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
-
-    #biblio_form_state.ui.selection.dropdown.inline
-      input type="hidden" name="biblio_form[state]"
-      = f.hidden_field :state
-      .text = @biblio_form.state_name
-      i.dropdown.icon
-      .menu
-        .item.active data-value="0"
-          |貸出可能
-        .item data-value="1"
-          |貸出中
-    = f.button type: :submit, name: "submit", value: "検索", class: 'ui green small green button'  do
-      |<i class="search icon"></i>
+    .ui.form
+      .fields
+        = f.text_field :title, class: "ui input four wide field", placeholder: "タイトル"
+        #biblio_form_state.ui.selection.dropdown.field
+          = f.hidden_field :state
+          .text = @biblio_form.state_name
+          i.dropdown.icon
+          .menu
+            .item.active data-value="0"
+              |貸出可能
+            .item data-value="1"
+              |貸出中
+        = f.button type: :submit, name: "submit", value: "検索", class: 'ui green small green button'  do
+          |<i class="search icon"></i>
 
 table.ui.table.grid
   thead
