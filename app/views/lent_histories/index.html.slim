@@ -3,22 +3,32 @@ h2.ui.header
   .sub.header
     |過去の貸出・返却などの履歴です。
 
-table.ui.table.segment.grid
-  thead
-    tr
-    th タイトル
-    th アカウント
-    th アクション
-    th 日時
-    th 返却予定
-  tbody
-    - @histories.each do |history|
+.ui.segment.green
+  = form_for @form, { url: lent_histories_path, method: :get } do |f|
+    .ui.form
+      .fields
+        = f.text_field :title, class: "ui input four wide field", placeholder: " タイトル"
+        = f.button type: :submit, name: :submit, value: :検索, class: "ui small green button icon"  do
+          |<i class="icon search">
+
+
+.ui.segment.teal
+  table.ui.table.segment.grid
+    thead
       tr
-        td = link_to history.biblio.book.title, history.biblio
-        td = history.user.uid
-        td = history.state_to_action
-        td = history.created_at
-        - if history.will_return_at
-          td = history.will_return_at
-        - elsif history.lendable?
-          td -
+      th タイトル
+      th アカウント
+      th アクション
+      th 日時
+      th 返却予定
+    tbody
+      - @histories.each do |history|
+        tr
+          td = link_to history.biblio.book.title, history.biblio
+          td = history.user.uid
+          td = history.state_to_action
+          td = history.created_at
+          - if history.will_return_at
+            td = history.will_return_at
+          - elsif history.lendable?
+            td -
