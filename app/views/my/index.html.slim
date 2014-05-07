@@ -10,7 +10,7 @@ h2.ui.header
   .ui.red.message
     = flash[:error]
 
-.ui.segment.green
+.ui.segment.teal
   h3.ui.header
     |借りている蔵書
 
@@ -34,7 +34,7 @@ h2.ui.header
           td = biblio.shelf.position_and_genre
           td = biblio.lent_histories.last.will_return_at
 
-.ui.segment.green
+.ui.segment.teal
   h3.ui.header
     |最近借りた蔵書
   table.ui.table.grid
