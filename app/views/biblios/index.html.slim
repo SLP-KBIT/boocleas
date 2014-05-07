@@ -39,7 +39,7 @@ h2.ui.header
           td = link_to biblio.book.title, biblio.book
           td = biblio.shelf.position_and_genre
           - if @biblio_form.state == LentHistory::OUT
-            td = biblio.lent_histories.last.will_return_at
+            td = biblio.lent_histories.last.will_return_at.to_s(:jp)
 
 javascript:
   $(".ui.selection.dropdown").dropdown();

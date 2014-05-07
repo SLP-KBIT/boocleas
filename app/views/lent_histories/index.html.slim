@@ -13,7 +13,7 @@ h2.ui.header
 
 
 .ui.segment.teal
-  table.ui.table.segment.grid
+  table.ui.table.grid
     thead
       tr
       th タイトル
@@ -27,8 +27,8 @@ h2.ui.header
           td = link_to history.biblio.book.title, history.biblio
           td = history.user.uid
           td = history.state_to_action
-          td = history.created_at
+          td = history.created_at.to_s(:jp)
           - if history.will_return_at
-            td = history.will_return_at
+            td = history.will_return_at.to_s(:jp)
           - elsif history.lendable?
             td -
