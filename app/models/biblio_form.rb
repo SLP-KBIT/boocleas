@@ -1,7 +1,7 @@
 class BiblioForm
   include ActiveModel::Model
 
-  attr_accessor :state
+  attr_accessor :state, :title
 
   def initialize(attributes={})
     super
@@ -14,8 +14,10 @@ class BiblioForm
   end
 
   def search
-    return Biblio.out if state.to_i == LentHistory::OUT
-    return Biblio.lendable if state.to_i == LentHistory::LENDABLE
-    Biblio.lendable
+    p search_form_state: @state
+    biblios = Biblio.out if state == LentHistory::OUT
+    biblios = Biblio.lendable if state == LentHistory::LENDABLE
+    biblios = biblios.select { |bib| bib.book.title.include? @title } if @title
+    biblios
   end
 end
