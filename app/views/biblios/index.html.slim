@@ -3,8 +3,13 @@ h2.ui.header
   .sub.header
     |保有している蔵書の一覧です。
 
-.ui.segment.green
-  = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
+= form_for @biblio_form, { url: biblios_path , method: :get } do |f|
+  .ui.segment.green
+    .ui.form
+      .ui.left.input.icon
+        = f.text_field :isbn, class: "four wide field", placeholder: " ISBN"
+        i.barcode.basic.icon
+  .ui.segment.green
     .ui.form
       .fields
         = f.text_field :keyword, class: "ui input four wide field", placeholder: " 検索キーワード"

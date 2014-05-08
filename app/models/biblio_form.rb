@@ -1,7 +1,7 @@
 class BiblioForm
   include ActiveModel::Model
 
-  attr_accessor :state, :keyword
+  attr_accessor :state, :keyword, :isbn
 
   def initialize(attributes={})
     super
@@ -17,6 +17,7 @@ class BiblioForm
     biblios = Biblio.out if state == LentHistory::OUT
     biblios = Biblio.lendable if state == LentHistory::LENDABLE
     biblios = biblios.select { |bib| bib.is_contain? @keyword } if @keyword
+    biblios = Book.where(isbn: @isbn).map(&:biblios).flatten if @isbn
     biblios
   end
 end
