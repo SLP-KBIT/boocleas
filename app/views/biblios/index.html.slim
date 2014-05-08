@@ -6,22 +6,24 @@ h2.ui.header
 = form_for @biblio_form, { url: biblios_path , method: :get } do |f|
   .ui.segment.green
     .ui.form
-      .ui.left.input.icon
-        = f.text_field :isbn, class: "four wide field", placeholder: " ISBN"
+      .ui.left.input.icon.field
+        = f.text_field :isbn, class: "four wide", placeholder: " ISBN"
         i.barcode.basic.icon
   .ui.segment.green
     .ui.form
-      .fields
-        = f.text_field :keyword, class: "ui input four wide field", placeholder: " 検索キーワード"
-        #biblio_form_state.ui.selection.dropdown.field
-          = f.hidden_field :state
-          .text = @biblio_form.state_name
-          i.dropdown.icon
-          .menu
-            .item.active data-value="0"
-              |貸出可能
-            .item data-value="1"
-              |貸出中
+      .two.fields
+        .ui.input.field
+          = f.text_field :keyword, class: "four wide", placeholder: " 検索キーワード"
+        .ui.field
+          #biblio_form_state.ui.selection.dropdown
+            = f.hidden_field :state
+            .text = @biblio_form.state_name
+            i.dropdown.icon
+            .menu
+              .item.active data-value="0"
+                |貸出可能
+              .item data-value="1"
+                |貸出中
         = f.button type: :submit, name: "submit", value: "検索", class: 'ui green small green button'  do
           |<i class="search icon"></i>
 
