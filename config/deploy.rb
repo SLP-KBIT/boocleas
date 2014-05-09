@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:slp-cem/book_admin.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-set :branch, 'master'
+set :branch, 'install_cap'
 
 # Default deploy_to directory is /var/www/my_app
 #set :deploy_to, '/var/www/my_app'
@@ -68,7 +68,7 @@ namespace :deploy do
   after :restart, :clear_cache do
     on roles(:web), in: :groups, limit: 3, wailt: 10 do
       within release_path do
-        execute :rmdir, '-rf', release_path.join((tmp/cache))
+        execute :rm, '-rf', release_path.join("tmp/cache")
       end
     end
   end
