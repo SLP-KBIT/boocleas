@@ -4,8 +4,8 @@ class BiblioForm
   attr_accessor :state, :keyword, :isbn
 
   def initialize(attributes={})
-    return nil if attributes.nil?
     @state = @state.try(:to_i) || LentHistory::LENDABLE
+    return nil if attributes.nil?
     @keyword = attributes[:keyword].presence
     @isbn = attributes[:isbn].presence
   end

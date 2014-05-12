@@ -17,7 +17,7 @@ class Biblio < ActiveRecord::Base
   has_many :lent_histories
   has_many :users, through: :lent_histories
 
-  before_save :default_save
+  before_save :default_shelf
 
   def self.lendable
     self.all.select(&:lendable?)
@@ -51,6 +51,6 @@ class Biblio < ActiveRecord::Base
   private
 
   def default_shelf
-    self.shelf_id = Shelf.where(position: "未登録").first.id
+    self.shelf_id = Shelf.where(position: "未登録").first.id if self.shelf_id.nil?
   end
 end
