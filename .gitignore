@@ -18,5 +18,5 @@
 *~
 *#*
 *.swp
-
+.envrc
 config/ldap.yml
