@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140506172401) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "biblios", force: true do |t|
     t.integer  "book_id"
     t.integer  "shelf_id"
@@ -21,8 +24,8 @@ ActiveRecord::Schema.define(version: 20140506172401) do
     t.integer  "registrant_id"
   end
 
-  add_index "biblios", ["book_id"], name: "index_biblios_on_book_id"
-  add_index "biblios", ["shelf_id"], name: "index_biblios_on_shelf_id"
+  add_index "biblios", ["book_id"], name: "index_biblios_on_book_id", using: :btree
+  add_index "biblios", ["shelf_id"], name: "index_biblios_on_shelf_id", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "isbn"
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 20140506172401) do
     t.datetime "updated_at"
   end
 
-  add_index "lent_histories", ["biblio_id"], name: "index_lent_histories_on_biblio_id"
-  add_index "lent_histories", ["user_id"], name: "index_lent_histories_on_user_id"
+  add_index "lent_histories", ["biblio_id"], name: "index_lent_histories_on_biblio_id", using: :btree
+  add_index "lent_histories", ["user_id"], name: "index_lent_histories_on_user_id", using: :btree
 
   create_table "shelves", force: true do |t|
     t.text     "genre"
@@ -82,8 +85,8 @@ ActiveRecord::Schema.define(version: 20140506172401) do
     t.integer  "group_id"
   end
 
-  add_index "users", ["group_id"], name: "index_users_on_group_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["uid"], name: "index_users_on_uid", unique: true
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["uid"], name: "index_users_on_uid", unique: true, using: :btree
 
 end
