@@ -3,6 +3,6 @@ class MyController < ApplicationController
   def index
     @biblios = LentHistory.lent_to(current_user).map(&:biblio)
     @biblo_form = BiblioForm.new params[:biblio_form]
-    @histories = LentHistory.where(user_id: current_user.id).group(:biblio_id).order("created_at DESC")
+    @histories = LentHistory.where(user_id: current_user.id).order("lent_histories.created_at DESC").group(:biblio_id, :id)
   end
 end

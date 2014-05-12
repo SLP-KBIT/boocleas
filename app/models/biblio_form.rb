@@ -4,6 +4,7 @@ class BiblioForm
   attr_accessor :state, :keyword, :isbn
 
   def initialize(attributes={})
+    return nil if attributes.nil?
     @state = @state.try(:to_i) || LentHistory::LENDABLE
     @keyword = attributes[:keyword].presence
     @isbn = attributes[:isbn].presence
@@ -27,7 +28,7 @@ class BiblioForm
     biblios = Biblio.lendable if @state == LentHistory::LENDABLE
     p after_state: biblios
     biblios = biblios.select { |bib| bib.is_contain? @keyword } if @keyword
-    biblios
+    Array(biblios)
   end
 
   def search_by_isbn

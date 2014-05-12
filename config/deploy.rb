@@ -6,7 +6,7 @@ set :repo_url, 'git@github.com:slp-cem/book_admin.git'
 
 # Default branch is :master
 # ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
-set :branch, 'install_cap'
+set :branch, 'master'
 
 # Default deploy_to directory is /var/www/my_app
 #set :deploy_to, '/var/www/my_app'
@@ -24,7 +24,7 @@ set :log_level, :debug
 # Default value for :pty is false
 # set :pty, true
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml}
+set :linked_files, %w{config/database.yml config/ldap.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
@@ -61,6 +61,7 @@ namespace :deploy do
   task :upload do
     on roles(:app) do |host|
       upload!('config/database.yml',"#{shared_path}/config")
+      upload!('config/ldap.yml',"#{shared_path}/config")
     end
   end
 
