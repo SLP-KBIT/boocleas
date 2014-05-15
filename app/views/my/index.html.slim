@@ -32,7 +32,7 @@ h2.ui.header
           td = biblio.book.author
           td = biblio.book.publisher
           td = biblio.shelf.position_and_genre
-          td = biblio.lent_histories.last.will_return_at.to_s(:jp)
+          td = biblio.lent_histories.last.will_return_at.try(:to_s, :jp)
 
 .ui.segment.teal
   h3.ui.header
