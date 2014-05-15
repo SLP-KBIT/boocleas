@@ -23,8 +23,14 @@ class LentHistory < ActiveRecord::Base
     OUT      => "貸出"
   }
 
-  scope :lent_to, -> (user) { where(user_id: user.id).group(:biblio_id, :id).having(state: OUT) }
   scope :out, -> { group(:biblio_id).having(state: OUT) }
+
+  def self.lent_to(user)
+    self.select(:user_id, :biblio_id).uniq.map do |hist|
+      history = self.where(user_id: user.id, biblio_id: hist.biblio_id).last
+      history if history.out?
+    end.compact.uniq
+  end
 
   def state_to_action
     STATE_ACTIONS[state]
