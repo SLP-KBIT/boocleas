@@ -30,8 +30,15 @@ class BooksController < ApplicationController
   def show
     @book = Book.where(id: params[:id]).first if params[:id]
   end
+  def destroy
+    @book = Book.where(id: params[:id]).first if params[:id]
+    @book.biblios.destroy_all
+    @book.destroy
+    redirect_to books_index_path
+  end
 
   private
+
   def book_params
     params.require(:book).permit(:title, :author, :isbn, :publisher, :published_at, :keyword,
       biblios_attributes: [:shelf_id]

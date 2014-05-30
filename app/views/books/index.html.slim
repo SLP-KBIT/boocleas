@@ -12,6 +12,7 @@ table.ui.table.grid
       th 出版社
       th 出版日
       th キーワード
+      th
   tbody
     - @books.each do |book|
       tr
@@ -21,3 +22,5 @@ table.ui.table.grid
         td = book.publisher
         td = book.published_at.to_s(:date)
         td = book.keyword
+        td = link_to book_path(book), class: "ui small icon red button", method: :delete do
+          i.icon.basic.trash
