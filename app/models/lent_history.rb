@@ -28,7 +28,7 @@ class LentHistory < ActiveRecord::Base
   def self.lent_to(user)
     self.select(:user_id, :biblio_id).uniq.map do |hist|
       history = self.where(user_id: user.id, biblio_id: hist.biblio_id).last
-      history if history.out?
+      history if history.try(:out?)
     end.compact.uniq
   end
 
