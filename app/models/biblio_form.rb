@@ -16,7 +16,7 @@ class BiblioForm
   end
 
   def search
-    return search_by_isbn @isbn if @isbn
+    return search_by_isbn if @isbn
     return search_by_filter
   end
 
