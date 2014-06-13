@@ -32,6 +32,10 @@ class LentHistory < ActiveRecord::Base
     end.compact.uniq
   end
 
+  def self.personal_history(user_id)
+    self.where(user_id: user_id).order("lent_histories.created_at DESC").to_a.uniq{ |e| e.biblio_id }
+  end
+
   def state_to_action
     STATE_ACTIONS[state]
   end
