@@ -2,12 +2,15 @@ require 'ndl'
 
 class BooksController < ApplicationController
   before_action :admin_only!, except: :show
+
   def index
     @books = Book.all
   end
+
   def new
     @book = Book.new
   end
+
   def confirm
     params_from_api = NDL.search_by_isbn(params[:book][:isbn])
     render text: "本が見つかりませんでした。" and return unless params_from_api
@@ -16,6 +19,7 @@ class BooksController < ApplicationController
     @book.biblios.build
     @shelves = Shelf.all
   end
+
   def create
     @book = Book.new(book_params)
     @book.biblios.last.registrant_id = current_user.id
@@ -27,9 +31,11 @@ class BooksController < ApplicationController
     flash[:success] = "書籍を登録しました。"
     redirect_to new_book_path
   end
+
   def show
     @book = Book.where(id: params[:id]).first if params[:id]
   end
+
   def destroy
     @book = Book.where(id: params[:id]).first if params[:id]
     @book.biblios.destroy_all
