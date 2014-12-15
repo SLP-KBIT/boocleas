@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   belongs_to :group
 
   def get_ldap_gecos
-    self.gecos = Devise::LDAP::Adapter.get_ldap_param(self.uid, "gecos").first
+    self.gecos = Devise::LDAP::Adapter.get_ldap_param(self.uid, "gecos").try(:first)
   end
 
   def email
