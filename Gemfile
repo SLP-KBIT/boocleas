@@ -49,11 +49,12 @@ group :development do
   gem 'pry-rails'
   gem 'annotate'
   gem 'quiet_assets'
-  gem 'better_errors'
-  gem 'binding_of_caller'
+  gem 'pry-byebug'
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-bundler'
+  gem 'pre-commit'
+  gem 'guard-rspec', require: false
 end
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
@@ -61,5 +62,6 @@ gem 'slim'
 
 gem 'devise'
 gem 'devise_ldap_authenticatable'
+gem 'draper'
 
 gem 'chosen-rails'
