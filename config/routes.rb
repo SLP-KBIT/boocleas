@@ -4,6 +4,8 @@ BookAdmin::Application.routes.draw do
   get "books/index"
   resources :books
   post "books/confirm", as: "book_confirm"
+  post "books/multiple_new", as: "book_multiple_new"
+  post "books/multiple_create", as: "book_multiple_create"
   resources :biblios
   post "biblios/confirm", as: "biblio_confirm"
   resources :shelves
