@@ -1,5 +1,7 @@
 h2  book
 
+= button_to "まとめて登録", book_multiple_new_path, class: "ui button small blue"
+
 - if flash[:error]
   .ui.error.mesage
     i.close.icon

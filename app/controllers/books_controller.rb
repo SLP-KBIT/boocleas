@@ -32,6 +32,10 @@ class BooksController < ApplicationController
     redirect_to new_book_path
   end
 
+  def multiple_new
+    @shelves = Shelf.all
+  end
+
   def show
     @book = Book.where(id: params[:id]).first if params[:id]
   end

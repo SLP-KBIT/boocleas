@@ -1,0 +1,5 @@
+h2 まとめて登録
+
+.ui.segment
+  = form_tag book_multiple_create_path do
+    = select_tag :shelf_id, options_from_collection_for_select(@shelves, :id, :position_and_genre), { include_blank: true, class: 'chosen-select' }
