@@ -20,5 +20,6 @@
 *#*
 *.swp
 .envrc
+.direnv
 config/ldap.yml
 public/assets/
