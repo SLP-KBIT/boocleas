@@ -1,0 +1,35 @@
+= params.inspect
+
+h2 book confirm
+= form_tag book_multiple_create_path do
+  - @books.each do |book|
+    .panel.panel-default
+      .panel.body
+        table.ui.table.segment
+          tr
+            th title
+            td = book.title
+          tr
+            th author
+            td = book.author
+          tr
+            th isbn
+            td = book.isbn
+          tr
+            th publisher
+            td = book.publisher
+          tr
+            th published_at
+            td = book.published_at
+          tr
+            th keyword
+            td = book.keyword
+        = hidden_field_tag 'books[][title]', book.title
+        = hidden_field_tag 'books[][author]', book.author
+        = hidden_field_tag 'books[][isbn]', book.isbn
+        = hidden_field_tag 'books[][publisher]', book.publisher
+        = hidden_field_tag 'books[][publised_at]', book.published_at
+        = hidden_field_tag 'books[][keyword]', book.keyword
+  = hidden_field_tag 'shelf_id', @shelf.id
+  = submit_tag 'CREATE BOOKS', class: 'ui segment blue button'
+= link_to "戻る", book_multiple_new_path, class: "ui button teal"

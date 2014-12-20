@@ -1,5 +1,19 @@
 h2 まとめて登録
 
+.ui.segment.inverted.teal.secondary
+  | バーコードリーダを使って書籍のISBNを読み込んでください。<br />
+    ISBNは<strong>9784</strong>から始まります。
+
 .ui.segment
-  = form_tag book_multiple_create_path do
+  = form_tag book_multiple_confirm_path do
     = select_tag :shelf_id, options_from_collection_for_select(@shelves, :id, :position_and_genre), { include_blank: true, class: 'chosen-select' }
+    .ui.form.segment.small
+      .field
+        = label_tag 'isbn'
+        .ui.labeled.input.left
+          = text_field_tag 'isbn[]'
+        .ui.labeled.input.left
+          = text_field_tag 'isbn[]'
+
+        .field
+          = submit_tag "確認", class: "ui submit blue button"

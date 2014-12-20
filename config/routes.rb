@@ -5,6 +5,7 @@ BookAdmin::Application.routes.draw do
   resources :books
   post "books/confirm", as: "book_confirm"
   post "books/multiple_new", as: "book_multiple_new"
+  post "books/multiple_confirm", as: "book_multiple_confirm"
   post "books/multiple_create", as: "book_multiple_create"
   resources :biblios
   post "biblios/confirm", as: "biblio_confirm"

@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140506172401) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "biblios", force: true do |t|
     t.integer  "book_id"
     t.integer  "shelf_id"
