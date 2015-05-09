@@ -48,6 +48,6 @@ class User < ActiveRecord::Base
   def set_defaults
     self.is_admin = false
     self.is_lendable = true
-    self.group = Group.where(name: "Club").first
+    self.group_id = Group.find_by(name: gecos).id
   end
 end

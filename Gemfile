@@ -55,6 +55,7 @@ group :development do
   gem 'capistrano-bundler'
   gem 'pre-commit'
   gem 'guard-rspec', require: false
+  gem 'better_errors'
 end
 
 gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
